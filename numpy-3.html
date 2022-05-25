@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/numpy-2.css">
+    <title>JunQi's study BLOG-numpy数组的运算</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+
+                    this.style.border = "1px solid pink";
+
+                }
+
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+
+                    }
+
+                    this.style.border = "1px solid orange";
+                }
+
+            </script><button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div class="wenzi">
+            <h2>本页介绍array数组的运算相关</h2>
+        </div>
+        <div class="wenzi">
+            <div class="wenzi">
+                <a name="1"></a>
+                <h3>array数组直接相加</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a=np.array([1,2,3,4,5])
+                        <br>
+                        b=np.array([2,3,4,5,6])
+                        <br>
+                        a+b
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out22.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        运算结果是对应元素的直接相加减后组成的新数组，这是arrray与python原生列表的显著不同点
+                    </p>
+                </div>
+
+            </div>
+            <div class="wenzi">
+                <a name="2"></a>
+                <h3>array数组直接相乘</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a=np.array([1,2,3,4,5])
+                        <br>
+                        b=np.array([2,3,4,5,6])
+                        <br>
+                        a+b
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out23.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        运算结果是对应元素的直接相乘除后组成的新数组
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="3"></a>
+
+                <h3>数组排序</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a=np.array([692795,42995,327855,580897,478523,157074,306904,662552,284652,159302])
+                        <br>
+                        np.sort(a)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out24.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        注意：仅仅只是对数组排序，并没有改变原本的数组a
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        order=np.argsort(a)
+                        order
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out25.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        argsort函数，，返回从小到大的排列数组中的索引位置
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="4"></a>
+
+                <h3>对数组中的元素求和与均值</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        np.sum(a)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out26.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        同样的也可以写成a.sum
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        a.mean()
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out27.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        同样的也可以写成np.mean(a)
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="5"></a>
+                <h3>其它统计相关的运算</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        np.std(a)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out28.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        结果是标准差
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        mv_score=np.array([9.6,9.5,9.5,9.4,9.4,9.4,9.4,9.3,9.3,9.3])
+                        <br>
+                        mv_length=np.array([142,116,116,142,171,194,195,133,109,92])
+                        <br>
+                        np.cov(mv_score,mv_length)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out29.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        第一个矩阵是电影评分，第二个矩阵是电影时长
+                        <br>
+                        所求的结果是这两个矩阵的相关系数矩阵
+                        <br>
+                        可以反应电影评分与电影时长之间的关系
+                    </p>
+                </div>
+                <div class="wenzi">
+                    <a name="6"></a>
+                    <h3>线性代数相关运算</h3>
+                    <div class="code">
+                        <span>IN:</span>
+                        <div class="codee">
+                            a=np.array([[1,2,3],[3,8,4],[7,8,9]])
+                            <br>
+                            np.linalg.det(a)
+                        </div>
+                    </div>
+                    <div class="out"><span>Out:</span><img src="./images/numpy-1/out30.png" alt=""></div>
+                    <div class="command">
+                        <p>
+                            结果运算的是一个3x3矩阵的行列式，但是由于计算机计算时的分数运算不可避免的会出现误差，所以结果会是一个无限循环小数
+                        </p>
+                    </div>
+                    <div class="code">
+                        <span>IN:</span>
+                        <div class="codee">
+                            a=np.array([[1,2,3],[3,8,4],[7,8,9]])
+                            <br>
+                            np.linalg.(a)
+                        </div>
+                    </div>
+                    <div class="out"><span>Out:</span><img src="./images/numpy-1/out31.png" alt=""></div>
+                    <div class="command">
+                        <p>
+                            所求的结果是逆矩阵，同样存在精度问题。
+                            <br>
+                            运算的前提是该矩阵可逆
+                        </p>
+                    </div>
+                    <div class="code">
+                        <span>IN:</span>
+                        <div class="codee">
+                            np.transpose(a)
+                        </div>
+                    </div>
+                    <div class="out"><span>Out:</span><img src="./images/numpy-1/out32.png" alt=""></div>
+                    <div class="command">
+                        <p>
+                            所求结果是对应矩阵的转置
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wenzi">
+                    <a name="7"></a>
+
+                    <h3>当然还有其它各种各样的运算</h3>
+                    <h4><a href="https://numpy.org/" id="numpy_herf" target="_blank"> 学会查文档！查网站！</a></h4>
+                </div>
+
+
+
+                <div id="shu_nav">
+                    <ul>
+
+                        <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+                        <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                                    src="./images/index/right.png" class="right"></a></li>
+                        <li><a href="./numpy-1.html"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                                    src="./images/index/right.png" class="right"></a></li>
+                        <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                                    src="./images/index/right.png" class="right"></a></li>
+                        <li><a href="./matplotlib-1.html"><img
+                                    src="./images/index/matplotlib.png"><span>matplotlib</span> <img
+                                    src="./images/index/right.png"></a></li>
+                        <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                                    src="./images/index/right.png" class="right"></a></li>
+                    </ul>
+                    </ul>
+                </div>
+                <div id="mulu">
+                    <li>目录</li>
+                    <li><a href="#top" class="li_herf">array数组直接相加&gt;</a>
+                    </li>
+                    <li><a href="#2" class="li_herf">array数组直接相乘&gt;</a>
+                    </li>
+                    <li><a href="#3" class="li_herf">数组排序&gt;</a>
+                    </li>
+                    <li><a href="#4" class="li_herf">对数组中的元素求和与均值&gt;</a>
+                    </li>
+                    <li><a href="#5" class="li_herf">其它统计相关的运算&gt;</a></li>
+                    <li><a href="#6" class="li_herf">线性代数相关运算&gt;</a></li>
+                    <li><a href="#7" class="li_herf">查文档&gt;</a></li>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul>
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>

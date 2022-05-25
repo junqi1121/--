@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/self.css">
+    <title>JunQi's study BLOG</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+
+                    this.style.border = "1px solid pink";
+
+                }
+
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+
+                    }
+
+                    this.style.border = "1px solid orange";
+                }
+
+            </script><button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div class="head">
+            <h1>简单自我介绍</h1>
+        </div>
+
+        <div class="essentialInformation">
+            <div class="biaoti">
+                <p>基本信息</p>
+            </div>
+            <div class="neirong">
+                <span><strong>姓名：</strong>刘骏麒</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span><strong>性别：</strong>男</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span><strong>学号：</strong>2021141460056</span><br>
+                <span><strong>电话：</strong>13523901976</span><br>
+                <span><strong>邮箱：</strong>liu_jun_qi@stu.scu.edu.cn</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                <span><strong>个人博客：</strong><a target="_blank" href="./index.html" class="lianjie">JunQi's Study
+                        blog</a></span><br>
+            </div>
+
+        </div>
+
+        <div class="skill">
+            <div class="biaoti">
+                <p>专业技能</p>
+            </div>
+            <div class="neirong">
+                <p>熟练掌握html+css的页面布局和JavaScript</p><br>
+                <p>掌握C语言和c++基础知识</p><br>
+                <p>掌握python基本语法，能够调用第三方库实现一些简单功能，能够用python进行数据分析</p>
+            </div>
+
+        </div>
+        <div class="educationalBackground">
+            <div class="biaoti">
+                <p>教育背景</p>
+
+            </div>
+            <div class="neirong">
+                <p>学历：大学本科在读；</p>
+                <p>就读学校：四川大学；</p>
+                <p>就读专业：计算机科学与技术；</p>
+                <p>入学年份：2021年。</p>
+            </div>
+
+        </div>
+        <div class="projectExperience">
+            <div class="biaoti">
+                <p>项目经验</p>
+            </div>
+            <div class="neirong">
+                <p><span class="delete"> 其实有没有什么能够写到简历上的经验……</span></p>
+                <ul>个人博客的基本主体制作</ul>
+                <li>pyhton制作飞机大战小游戏</li>
+                <ul>GUI界面的学生管理系统</ul>
+            </div>
+        </div>
+        <div class="zwpj">
+            <div class="biaoti">
+                <p>自我评价</p>
+            </div>
+            <div class="neirong">
+                <p>阳光开朗，积极上进，渴望学习知识、获得技能，希望在大学中锻炼自己各个方面的能力</p><br>
+                <p>对待工作认真细心，对待学习努力上进，与同学相处融洽</p><br>
+                <p>…………</p>
+            </div>
+
+        </div>
+
+        <div id="shu_nav">
+            <ul>
+                <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+                <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="#"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png"><span>matplotlib</span> <img
+                            src="./images/index/right.png"></a></li>
+                <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul>
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/pandas-1.css">
+    <title>JunQi's study BLOG-pandas的数据结构</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+
+                    this.style.border = "1px solid pink";
+
+                }
+
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+
+                    }
+
+                    this.style.border = "1px solid orange";
+                }
+
+            </script><button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div class="wenzi">
+            <h2>本页介绍pandas的数据结构</h2>
+        </div>
+        <div class="wenzi">
+            <div class="wenzi">
+                <a name="1"></a>
+                <h3>Pandas 数据结构 - Series</h3>
+                <div class="command">
+                    <p>
+                        Pandas Series 类似表格中的一个列（column），类似于一维数组，可以保存任何数据类型。
+                        <br>
+                        Series 由索引（index）和列组成，函数如下：
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        import pandas as pd
+                        <br>
+                        a = [1, 2, 3]
+                        <br>
+                        myvar = pd.Series(a)
+                        <br>
+                        print(myvar)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/pandas/out1.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        pandas.Series( data, index, dtype, name, copy)
+                        <br>
+                        data：一组数据(ndarray 类型)。
+                        <br>
+                        index：数据索引标签，如果不指定，默认从 0 开始。
+                        <br>
+                        dtype：数据类型，默认会自己判断。
+                        <br>
+                        name：设置名称。
+                        <br>
+                        copy：拷贝数据，默认为 False。
+                        <br>
+                        从上图可知，如果没有指定索引，索引值就从 0 开始，我们可以根据索引值读取数据：
+                    </p>
+                </div>
+                <div class="command">
+                    <p>
+                        Pandas Series 类似表格中的一个列（column），类似于一维数组，可以保存任何数据类型。
+                        <br>
+                        Series 由索引（index）和列组成，函数如下：
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        import pandas as pd
+                        <br>
+                        sites = {1: "Google", 2: "Runoob", 3: "Wiki"}
+                        <br>
+                        myvar = pd.Series(sites)
+                        <br>
+                        print(myvar)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/pandas/out2.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        我们也可以使用 key/value 对象，类似字典来创建 Series：
+                        <br>从上图可知，字典的 key 变成了索引值。
+                    </p>
+                </div>
+            </div>
+
+            <div class="wenzi">
+                <a name="2"></a>
+                <h3>Pandas 数据结构 - DataFrame</h3>
+                <div class="command">
+                    <p>
+                        DataFrame 是一个表格型的数据结构，它含有一组有序的列，每列可以是不同的值类型（数值、字符串、布尔型值）。DataFrame 既有行索引也有列索引，它可以被看做由 Series
+                        组成的字典（共同用一个索引）。
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        import pandas as pd
+                        <br>
+                        data = [['Google',10],['Runoob',12],['Wiki',13]]
+                        <br>
+                        df = pd.DataFrame(data,columns=['Site','Age'],dtype=float)
+                        <br>
+                        print(df)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/matplotlib/out3.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        DataFrame 构造方法如下：
+                        <br>
+                        pandas.DataFrame( data, index, columns, dtype, copy)
+                        <br>
+                        参数说明：
+                        <br>
+                        data：一组数据(ndarray、series, map, lists, dict 等类型)。
+                        <br>
+                        index：索引值，或者可以称为行标签。
+                        <br>
+                        columns：列标签，默认为 RangeIndex (0, 1, 2, …, n) 。
+                        <br>
+                        dtype：数据类型。
+                        <br>
+                        copy：拷贝数据，默认为 False。
+                        <br>
+                        Pandas DataFrame 是一个二维的数组结构，类似二维数组。
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        import pandas as pd
+                        <br>
+                        data = [['Google',10],['Runoob',12],['Wiki',13]]
+                        <br>
+                        df = pd.DataFrame(data,columns=['Site','Age'],dtype=float)
+                        <br>
+                        print(df)
+                        <br>
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/matplotlib/out4.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        使用列表创建
+                    </p>
+                </div>
+            </div>
+
+
+            <div id="shu_nav">
+                <ul>
+
+                    <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+                    <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="./numpy-1.html"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png"><span>matplotlib</span>
+                            <img src="./images/index/right.png"></a></li>
+                    <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                </ul>
+                </ul>
+            </div>
+            <div id="mulu">
+                <li>目录</li>
+                <li><a href="#top" class="li_herf">Pandas 数据结构 - Series&gt;</a>
+                </li>
+                <li><a href="#2" class="li_herf">Pandas 数据结构 - DataFrame&gt;</a>
+                </li>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul>
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>

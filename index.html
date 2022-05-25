@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/index.css">
+    <title>JunQi's study BLOG</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+                    this.style.border = "1px solid pink";
+                }
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+                    }
+                    this.style.border = "1px solid orange";
+                }
+            </script>
+            <button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div id="about">
+            <h2>关于本站</h2>
+            <ul>
+                <li>首先这是刘骏麒的网页设计课程期末大作业</li>
+                <li>其次我想借此机会对前段时间所学的html、css、还有少量的JavaScript只是做以总结和运用</li>
+                <li>内容部分除了硬性要求的自我介绍之外，我选择的是python有关数据分析的三个基础库</li>
+                <li>所以此站的搭建能够巩固我对网页设计的知识，也能够让我复习或者是学习数据分析有关知识</li>
+                <li><strong>希望此网页能够为我以后搭建个人博客打下基础</strong><span>当然顺便完成作业</span></li>
+            </ul>
+        </div>
+        <div id="tech">
+            <h2>主要使用的技术</h2>
+            <ul>
+                <li><strong>html</strong>的基本元素</li>
+                <li><strong>css</strong>的浮动、定位布局</li>
+                <li>少量的<strong>JavaScript</strong>对html和css属性改变</li>
+                <li><strong>模板</strong>技术</li>
+            </ul>
+            <div id="numpy">
+                <h2>什么是numpy？</h2>
+                <div class="info">
+                    <img src="./images/index/numpy.png" alt="">
+                    <p>NumPy（Numerical Python）是Python的一种开源的数值计算扩展。<br>
+                        这种工具可用来存储和处理大型矩阵，比Python自身的嵌套列表（nested list
+                        structure)结构要高效的多（该结构也可以用来表示矩阵（matrix）），<br>
+                        支持大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库 。<br>
+                        提供了一个多维数组对象、各种派生对象（例如掩码数组和矩阵），以及用于对数组进行快速操作的各种例程,<br>
+                        包括数学、逻辑、形状操作、排序、选择、I/O 、离散傅立叶变换、基本线性代数、基本统计运算、随机模拟等等。</p>
+                </div>
+            </div>
+            <div id="pandas">
+                <h2>什么是pandas？</h2>
+                <div class="info">
+                    <img src="./images/index/pandas.png" alt="">
+                    <p>Pandas 是 Python 的核心数据分析支持库，提供了快速、灵活、明确的数据结构，旨在简单、直观地处理关系型、标记型数据。<br>
+                        Pandas 的目标是成为 Python数据分析实践与实战的必备高级工具，其长远目标是成为最强大、最灵活、可以支持任何语言的开源数据分析工具。
+                        <br>
+                        经过多年不懈的努力，Pandas 离这个目标已经越来越近了。
+                        <br>
+                        pandas 是基于NumPy 的一种工具，该工具是为解决数据分析任务而创建的。
+                        <br>
+                        Pandas纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。
+                        <br>
+                        pandas提供了大量能使我们快速便捷地处理数据的函数和方法。你很快就会发现，它是使Python成为强大而高效的数据分析环境的重要因素之一。
+                    </p>
+                </div>
+            </div>
+            <div id="matplotlib">
+                <h2>什么是matplotlib？</h2>
+                <div class="info">
+                    <img src="./images/index/matplotlib.png" alt="">
+                    <p>Matplotlib 是 Python 的绘图库，它能让使用者很轻松地将数据图形化，并且提供多样化的输出格式。
+                        <br>
+                        Matplotlib 可以用来绘制各种静态，动态，交互式的图表。
+                        <br>
+                        Matplotlib 是一个非常强大的 Python 画图工具，我们可以使用该工具将很多数据通过图表的形式更直观的呈现出来。
+                        <br>
+                        Matplotlib 可以绘制线图、散点图、等高线图、条形图、柱状图、3D 图形、甚至是图形动画等等。
+                </div>
+            </div>
+        </div>
+
+
+        <div id="shu_nav">
+            <ul>
+                <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+
+                <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="./numpy-1.html"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png"><span>matplotlib</span> <img
+                            src="./images/index/right.png"></a></li>
+                <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul id="most_left">
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>

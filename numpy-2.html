@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/numpy-2.css">
+    <title>JunQi's study BLOG-numpy数组的性质</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+
+                    this.style.border = "1px solid pink";
+
+                }
+
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+
+                    }
+
+                    this.style.border = "1px solid orange";
+                }
+
+            </script><button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div class="wenzi">
+            <h2>本页介绍array数组的一些性质</h2>
+        </div>
+        <div class="wenzi">
+            <div class="wenzi">
+                <a name="1"></a>
+                <h3>查看array数组的一些属性</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a=np.array([1,2,3,4,5])
+                        <br>
+                        type(a)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out12.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        type是python的内置函数，用于直接查看属性。
+                    </p>
+                </div>
+
+            </div>
+            <div class="wenzi">
+                <a name="2"></a>
+                <h3>查看数组中的数据类型</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a.dtype
+                        <br>
+                        或者
+                        np.dtype(a)
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out13.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        dtype是查看的数组中的元素的属性，具体有哪些属性建议查看<a href="https://numpy.org/">文档</a>
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="3"></a>
+
+                <h3>查看数组的形状</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a=np.array([1,2,3,4,5])
+                        <br>
+                        a.shape
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out14.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        结果代表数组是一维的，含有5个元素
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        a=np.array([[1,2,3,4,5],[2,3,4,5,6]])
+                        <br>
+                        a.shape
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out15.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        结果代表数组是二维的，每一维含有5个元素
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="4"></a>
+
+                <h3>查看元素的个数与维度</h3>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a.size
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out16.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        结果代表数组中一共有101个元素
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        a.ndim
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out17.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        结果代表数组的维度数是1
+                    </p>
+                </div>
+            </div>
+            <div class="wenzi">
+                <a name="5"></a>
+                <h3>数组的索引和切片</h3>
+                <h4>与原生的python几乎相同</h4>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+                        a=np.array([[0,1,2,3,4,5],[10,11,12,13,14,15],[20,21,22,23,24,25],[30,31,32,33,34,35],[40,41,42,43,44,45],[50,51,52,53,54,55]])
+                        <br>
+                        a
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out18.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        首先创建一个5x5的矩阵，待会对其进行切片
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a[-3:,range(0,6,2)]
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out19.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        返回的是最后三行的1,3,5列 <br>
+                        逗号前面的索引是行索引，代表从倒数第三行到最后一行 <br>
+                        逗号后面是列索引，运用了range（）函数，生成了1,3,5列的列标
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        mask=np.array([1,0,1,0,0,1],dtype='bool')
+                        <br>
+                        mask
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out20.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        布尔型的数组
+                    </p>
+                </div>
+                <div class="code">
+                    <span>IN:</span>
+                    <div class="codee">
+
+                        a[mask,2]
+                    </div>
+                </div>
+                <div class="out"><span>Out:</span><img src="./images/numpy-1/out21.png" alt=""></div>
+                <div class="command">
+                    <p>
+                        根据布尔数组返回选取第一行，第三行，第六行 的第二列
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+            <div id="shu_nav">
+                <ul>
+
+                    <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+                    <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="./numpy-1.html"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                                src="./images/index/right.png" class="right"></a></li>
+                    <li><a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png"><span>matplotlib</span>
+                            <img src="./images/index/right.png"></a></li>
+                    <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                                src="./images/index/right.png" class="right"></a></li>
+                </ul>
+                </ul>
+            </div>
+            <div id="mulu">
+                <li>目录</li>
+                <li><a href="#top" class="li_herf">查看array数组的一些属性&gt;</a>
+                </li>
+                <li><a href="#2" class="li_herf">查看数组中的数据类型&gt;</a>
+                </li>
+                <li><a href="#3" class="li_herf">查看数组的形状&gt;</a>
+                </li>
+                <li><a href="#4" class="li_herf">查看元素的个数与维度&gt;</a>
+                </li>
+                <li><a href="#5" class="li_herf">数组的索引和切片&gt;</a>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul>
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>

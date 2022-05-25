@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/numpy-1.css">
+    <title>JunQi's study BLOG-numpy数组的创建</title>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="logo"><img src="./images/index/wangye.png" alt="图标">
+            <div>JunQi's study BLOG</div>
+        </div>
+
+        <div id="part">
+            <ul class="navvv">
+                <li><a href="./index.html"><img src="./images/index/shouye.png">首页</a></li>
+                <li><a href="./numpy-1.html">
+                        <img src="./images/index/numpy.png">numpy</a>
+                    <ul>
+                        <li>
+                            <a href="./numpy-1.html">array创建</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-2.html">array性质</a>
+                        </li>
+                        <li>
+                            <a href="./numpy-3.html">array运算</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./pandas-1.html"><img src="./images/index/pandas.png">pandas</a>
+                    <ul>
+                        <li>
+                            <a href="./pandas-1.html">基本数据结构</a>
+                        </li>
+                        <li>
+                            <a href="./pandas-2.html">可视化</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png">matplotlib</a>
+                    <ul>
+                        <li>
+                            <a href="./matplotlib-1.html">绘图示例</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-2.html">基本操作</a>
+                        </li>
+                        <li>
+                            <a href="./matplotlib-3.html">图像属性</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./self.html"><img src="./images/index/self.png">关于我</a></li>
+            </ul>
+            <script>
+                // 1. 获取元素
+                var nav = document.querySelector('.navvv');
+                var lis = nav.children; // 得到4个小li
+                // 2.循环注册事件
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onmouseover = function () {
+                        this.children[1].style.display = 'block';
+                    }
+                    lis[i].onmouseout = function () {
+                        this.children[1].style.display = 'none';
+                    }
+                }
+            </script>
+        </div>
+
+        <div id="search"><input type="text" id="text" value="请输入要查询的内容">
+            <!-- 实现内容的隐藏与释放 -->
+            <!-- 真正的搜索功能没有实现，现在还不会，以后有机会一定完成 -->
+            <script>
+                var text = document.getElementById('text');
+                text.onfocus = function () {
+                    console.log("得到了焦点");
+
+                    if (this.value == "请输入要查询的内容") {
+                        this.value = '';
+                    }
+
+                    this.style.border = "1px solid pink";
+
+                }
+
+                text.onblur = function () {
+                    if (this.value == '') {
+                        this.value = "请输入要查询的内容";
+
+                    }
+
+                    this.style.border = "1px solid orange";
+                }
+
+            </script><button><img src="./images/index/search.png" alt=""></button>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 主体内容 -->
+    <div id="content">
+        <div class="wenzi">
+            <h2>本页介绍numpy的特殊数组array的创建</h2>
+        </div>
+        <div class="wenzi">
+            <h3>关于array数组的一些介绍:</h3>
+
+            <img id="info_array" src="./images/numpy-1/1.png" alt="">
+        </div>
+        <div class="wenzi">
+            <a name="2"></a>
+
+            <h3>通过列表或者元组直接创建:</h3>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+
+                    a=np.array([1,2,3,4,5]) <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out1.png" alt=""></div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+                    a=np.array([1,2,3,4,5])
+                    <br>
+                    a
+
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out2.png" alt=""></div>
+        </div>
+        <div class="wenzi">
+            <a name="3"></a>
+
+            <h3>创建全零数组或者全一数组:</h3>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+
+                    a=np.ones(10)
+                    <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out3.png" alt=""></div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+                    a=np.zeros(8,dtype='int')
+                    <br>
+                    a
+
+
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out4.png" alt=""></div>
+            <div class="command">
+                <p>
+                    ones和zeros分别是构造全一数组和全零数组，默认的类型是浮点型，如果可以通过（dtype=“ 类型”）指定
+                </p>
+            </div>
+        </div>
+        <div class="wenzi">
+            <a name="4"></a>
+
+            <h3>生成特殊规律的数列:</h3>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+
+                    a=np.linspace(0,10,11)
+                    <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out5.png" alt=""></div>
+            <div class="command">
+                <p>
+                    linspace是生成线性等差的数列，前三个参数分别是start stop 和 num，该函数会生成首项是start，尾项是stop，共num项的等差数列
+                </p>
+            </div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+
+                    a=np.logspace(1,5,5)
+                    <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out6.png" alt=""></div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+                    a=np.logspace(2,7,6,base=2)
+                    <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out7.png" alt=""></div>
+            <div class="command">
+                <p>
+                    logspace是生成对数系下的等差数列，可理解为先根据前三个参数用linspace生成等差数列，之后算base的相应次方，base缺省时默认是10
+                </p>
+            </div>
+        </div>
+        <div class="wenzi">
+            <a name="5"></a>
+
+            <h3>生成由随机数组成的数列:</h3>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+
+                    a=np.random.random(5)
+                    <br>
+                    a
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out8.png" alt=""></div>
+            <div class="command">
+                <p>
+                    第一个random是调用random模块，第二个random是调用random函数，此函数生成的是0-1的随机数，传入的参数为生成的个数
+                </p>
+            </div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+                    np.random.randn(5)
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out9.png" alt=""></div>
+            <div class="command">
+                <p>
+                    randn是生成符合正态分布的随机数，传入参数为个数
+                </p>
+            </div>
+            <div class="code">
+                <span>IN:</span>
+                <div class="codee">
+                    np.random.randint(0,2,10)
+                </div>
+            </div>
+            <div class="out"><span>Out:</span><img src="./images/numpy-1/out11.png" alt=""></div>
+            <div class="command">
+                <p>
+                    生成随机整数，前两个参数是起点和终点（生成的数中不含终点），第三个参数为个数
+                </p>
+            </div>
+        </div>
+        <div class="wenzi">
+            <a name="6"></a>
+
+            <h3>当然还有其它的许多形式的特殊数组</h3>
+            <h4>比如高斯分布</h4>
+            <h4>再比如生成不重复的随机数等</h4>
+            <h4><a href="https://numpy.org/" id="numpy_herf" target="_blank"> 学会查文档！查网站！</a></h4>
+        </div>
+
+
+
+
+
+        <div id="shu_nav">
+            <ul>
+
+                <li><a href="#top"><img src="./images/index/up.png"><span>返回顶部</span> </a></li>
+                <li><a href="./index.html"><img src="./images/index/shouye.png"><span>首页</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="./numpy-1.html"><img src="./images/index/numpy.png"><span>numpy</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="#"><img src="./images/index/pandas.png"><span>pandas</span><img
+                            src="./images/index/right.png" class="right"></a></li>
+                <li><a href="./matplotlib-1.html"><img src="./images/index/matplotlib.png"><span>matplotlib</span> <img
+                            src="./images/index/right.png"></a></li>
+                <li><a href="./self.html"><img src="./images/index/self.png"><span>关于我</span> <img
+                            src="./images/index/right.png" class="right"></a></li>
+            </ul>
+            </ul>
+        </div>
+        <div id="mulu">
+            <li>目录</li>
+            <li><a href="#top" class="li_herf">array的一些介绍&gt;</a>
+            </li>
+            <li><a href="#2" class="li_herf">通过列表或者元组直接创建&gt;</a>
+            </li>
+            <li><a href="#3" class="li_herf">创建全零数组或者全一数组&gt;</a>
+            </li>
+            <li><a href="#4" class="li_herf">生成特殊规律的数列&gt;</a>
+            </li>
+            <li><a href="#5" class="li_herf">生成由随机数组成的数列&gt;</a>
+            </li>
+            <li><a href="#6" class="li_herf">其它小贴士&gt;</a>
+            </li>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="f_top">
+            <ul>
+                <h2>个人链接</h2>
+                <li><a href="https://github.com/junqi1121" target="_blank">github</a></li>
+                <li><a href="https://gitee.com/liu-jun-qi" target="_blank">gitee</a></li>
+            </ul>
+            <ul>
+                <h2>构建工具</h2>
+                <li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+                <li><a href="https://www.adobe.com/cn/products/dreamweaver.html" target="_blank">Adobe
+                        Dreamweaver CC 2018</a></li>
+                <li><a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">Google Chrome</a></li>
+                <li><a href="https://zh.snipaste.com/download.html" target="_blank">Snipaste</a></li>
+            </ul>
+            <ul>
+                <h2>友情链接</h2>
+                <li><a href="https://www.csdn.net/" target="_blank">CSDN</a></li>
+                <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
+            </ul>
+            <div class="img"><img src="./images/index/qq_qrcard.png" alt="" id="1"></div>
+            <div class="img"><img src="./images/index/wechat_qrcard.png" alt="" id="1"></div><span
+                id="QQ">QQ</span><span id="wexin">微信</span>
+        </div>
+        <div id="f_bottom">
+            <!-- 访问计数功能以后再实现，现在先以文字代替 -->
+            <p>© 2022 刘骏麒 蜀ICP备00000000号 本站访问量：2次 您是第 2 位访问者</p>
+        </div>
+    </div>
+</body>
+
+</html>
